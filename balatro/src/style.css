@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Inter:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --bg-deep: #0a1438;
+  --bg-water: #1a2858;
+  --bg-glow: #2d4080;
+  --sb-blue: #4a6bff;
+  --sb-blue-dk: #2d4080;
+  --sb-panel: #1a2858;
+  --inset: #050818;
+  --chips-from: #4dd6ff;
+  --chips-to: #2196f3;
+  --mult-from: #ff8844;
+  --mult-to: #ff3344;
+  --gold: #ffc857;
+  --money: #ffb030;
+  --btn-red: #ff3838;
+  --btn-orange: #ff8800;
+  --btn-blue: #4a6bff;
+  --btn-green: #62d18b;
+  --btn-discard: #ff5544;
+  --text: #ffffff;
+  --text-dim: #c9d2e8;
+  --muted: #8a9bbf;
+  --paper-1: #fff8e1;
+  --paper-2: #f7e9c4;
+  --paper-3: #e9d6a4;
+  --card-edge: #1a0f24;
+  --pixel: 'Press Start 2P', monospace;
+  --display: 'VT323', monospace;
+  --sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg-deep);
+  color: var(--text);
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ==================== BUTTONS ==================== */
+.px-btn {
+  min-height: 52px;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.45);
+  border: 2px solid rgba(0,0,0,.35);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3);
+  white-space: nowrap;
+}
+.px-btn:hover:not([disabled]) { transform: translateY(-2px); filter: brightness(1.1) saturate(1.15); }
+.px-btn:active:not([disabled]) { transform: translateY(2px); filter: brightness(0.92); }
+.px-btn[disabled] { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.3); }
+
+.px-btn.play {
+  background: linear-gradient(180deg,#34d399,#10b981,#059669);
+  box-shadow: 0 5px 0 #047857, inset 0 1px 0 rgba(255,255,255,.3);
+}
+.px-btn.discard {
+  background: linear-gradient(180deg,#fb7185,#ef4444,#dc2626);
+  box-shadow: 0 5px 0 #991b1b, inset 0 1px 0 rgba(255,255,255,.3);
+}
+.px-btn.sort {
+  background: rgba(99,102,241,.28);
+  border: 1px solid rgba(99,102,241,.5);
+  box-shadow: 0 3px 0 rgba(67,56,202,.4);
+  font-size: 14px;
+  min-height: 44px;
+}
+.px-btn.settings-color {
+  background: linear-gradient(180deg,#fbbf24,#f59e0b,#d97706);
+  box-shadow: 0 4px 0 #92400e, inset 0 1px 0 rgba(255,255,255,.3);
+}
+.px-btn.shop-skip {
+  background: linear-gradient(180deg,#818cf8,#6366f1,#4338ca);
+  box-shadow: 0 5px 0 #312e81, inset 0 1px 0 rgba(255,255,255,.3);
+}
+.px-btn.restart {
+  background: linear-gradient(180deg,#fb7185,#ef4444,#dc2626);
+  box-shadow: 0 5px 0 #991b1b, inset 0 1px 0 rgba(255,255,255,.3);
+}
+.px-btn.ai {
+  background: linear-gradient(180deg,#c084fc,#a855f7,#7e22ce);
+  box-shadow: 0 5px 0 #581c87, 0 8px 18px rgba(168,85,247,.4), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.px-btn.ai.thinking {
+  animation: ai-pulse 1s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ==================== SETTINGS GEAR BTN ==================== */
+.settings-gear-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(180deg,#fbbf24,#f59e0b,#d97706);
+  box-shadow: 0 4px 0 #92400e, 0 6px 12px rgba(245,158,11,.35), inset 0 1px 0 rgba(255,255,255,.3);
+  border: 2px solid rgba(0,0,0,.35);
+  font-size: 22px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.15s ease;
+}
+.settings-gear-btn:hover {
+  transform: translateY(-2px) rotate(30deg);
+  filter: brightness(1.1);
+}
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(74,107,255,.4); border-radius: 4px; }
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes score-fly {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-60px) scale(1.3); }
+}
+
+@keyframes joker-glow {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 18px 6px var(--gold); }
+}
+
+@keyframes card-deal {
+  from { opacity: 0; transform: translateY(40px) scale(0.8); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
